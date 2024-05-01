@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 03</title>
+
+    <style>
+      .error {
+        color: red;
+        display: none;
+      }
+
+      .error-border {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+
+  <body>
+    Operand 1: <input id="input1" type="text" /> <br />
+    <span id="input1Error" class="error">Enter value</span> <br />
+
+    Operand 2: <input id="input2" type="text" /> <br />
+    <span id="input2Error" class="error">Enter value</span> <br />
+
+    <button id="add-btn">+</button>
+    <button id="rem-btn">-</button>
+    <button id="mul-btn">*</button>
+    <button id="div-btn">/</button>
+    <button id="reset-btn">reset</button>
+
+    <script>
+      /*
+        Task:
+        Make changes to this script.
+        Add a handler for clicking the reset button. When clicked, the values ​​entered in the "Operand 1" input fields
+        and "Operand 2" must be replaced with the values ​​0
+        Add a check before performing any arithmetic operation. If the input field is empty, do
+        give this input field a red border and make the error element visible below this input field.
+        For the input1 input field, if there is no value, make the span #input1Error visible for the input field
+        input2 make #input2Error visible in case of error.
+        */
+      let input1 = document.querySelector("#input1");
+      let input2 = document.querySelector("#input2");
+
+      let addBtn = document.querySelector("#add-btn");
+      let remBtn = document.querySelector("#rem-btn");
+      let mulBtn = document.querySelector("#mul-btn");
+      let divBtn = document.querySelector("#div-btn");
+      let resetBtn = document.querySelector("#reset-btn");
+
+      addBtn.addEventListener("click", function () {
+        resetErrors();
+
+        if (validate()) {
+          alert(Number(input1.value) + Number(input2.value));
+        }
+      });
+
+      remBtn.addEventListener("click", function () {
+        resetErrors();
+
+        if (validate()) {
+          alert(input1.value - input2.value);
+        }
+      });
+
+      mulBtn.addEventListener("click", function () {
+        resetErrors();
+
+        if (validate()) {
+          alert(input1.value * input2.value);
+        }
+      });
+
+      divBtn.addEventListener("click", function () {
+        resetErrors();
+
+        if (validate()) {
+          alert(input1.value / input2.value);
+        }
+      });
+
+      // resetting values ​​in input fields
+      resetBtn.addEventListener("click", function () {
+        input1.value = input2.value = 0;
+      });
+
+      // function to check if at least one of the input fields has no value, returns false
+      function validate() {
+        let valid = true;
+
+        if (!input1.value) {
+          showError(input1);
+          valid = false;
+        }
+
+        if (!input2.value) {
+          showError(input2);
+          valid = false;
+        }
+
+        return valid;
+      }
+
+      // function to display a red frame for an input field and display an error message
+      function showError(element) {
+        element.classList.add("error-border");
+        let errorSpanId = element.id + "Error"; //input1Error or input2Error
+        document.querySelector("#" + errorSpanId).style.display = "block";
+      }
+
+      // function to hide all errors and remove styles associated with errors
+      function resetErrors() {
+        let errorsSpans = document.querySelectorAll(".error");
+        errorsSpans.forEach((span) => {
+          span.style.display = "none";
+        });
+
+        let inputs = document.querySelectorAll("input");
+        inputs.forEach((input) => {
+          input.classList.remove("error-border");
+        });
+      }
+    </script>
+  </body>
+</html>

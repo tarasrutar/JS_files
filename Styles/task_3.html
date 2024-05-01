@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 02</title>
+  </head>
+
+  <body>
+    <div>Login is incorrect</div>
+    <script>
+      /*
+        Task:
+        Without using CSS classes, use JavaScript code to change the design of the DIV element located on the current page.
+        
+        Добавьте:
+        >> font - 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        >> solid frame 1 px thick red color
+        >> 16px padding
+        >> frame rounding 8 px
+        */
+
+      let elem = document.querySelector("div");
+
+      elem.style.fontFamily =
+        "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;";
+      elem.style.border = "solid 1px red";
+      elem.style.padding = "16px";
+      elem.style.borderRadius = "8px";
+    </script>
+  </body>
+</html>

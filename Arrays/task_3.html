@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 4</title>
+  </head>
+
+  <body>
+    <pre>
+        Task:
+        Given an array. Create two new arrays based on the values ​​of this array. Put all even values ​​in one array, and y
+        the second is all odd.
+        Display the values ​​entered in the first array and in the second array.
+    </pre>
+    <script>
+      let values = [10, 20, 5, 7, 11, 8, 125, 4, 8, 3, 23];
+      let oddValues = [];
+      let evenValues = [];
+      let oddValuesPosition = 0;
+      let evenValuesPosition = 0;
+
+      for (let value of values) {
+        if (value % 2 == 0) {
+          evenValues[evenValuesPosition] = value;
+          evenValuesPosition++;
+        } else {
+          oddValues[oddValuesPosition] = value;
+          oddValuesPosition++;
+        }
+      }
+
+      console.log("Odd Value");
+      for (let oddVal of oddValues) {
+        console.log(oddVal);
+      }
+
+      console.log("Even Value");
+      for (let evenVal of evenValues) {
+        console.log(evenVal);
+      }
+    </script>
+  </body>
+</html>

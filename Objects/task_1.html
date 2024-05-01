@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2</title>
+  </head>
+  <body>
+    <pre>
+        Task:
+        Create two objects using a constructor and a literal. Both objects must contain the properties firstName and
+        lastName
+        with arbitrary values. Create a print function that will accept an object as a parameter and output its properties
+        lastName and firstName of the received object to the screen.
+    </pre>
+    <script>
+      let obj1 = new Object();
+      obj1.firstName = "Jhon";
+      obj1.lastName = "Doe";
+
+      let obj2 = {
+        firstName: "JHON",
+        lastName: "DOE",
+      };
+
+      function print(obj) {
+        console.log("First Name: " + obj.firstName);
+        console.log("Last Name: " + obj.lastName);
+      }
+
+      print(obj1);
+      print(obj2);
+    </script>
+  </body>
+</html>

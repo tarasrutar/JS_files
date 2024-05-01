@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+  </head>
+
+  <body>
+    <pre>
+        Task:
+        Write a script that will find the minimum, maximum value of an array, and also output the sum of all elements of the array.
+    </pre>
+    <script>
+      let values = [10, 20, 4, 6, 11, 9, 125, -1, 8, 0, 3];
+      let max = Number.MIN_VALUE;
+      let min = Number.MAX_VALUE;
+      let sum = 0;
+
+      for (let index = 0; index < values.length; index++) {
+        const element = values[index];
+        if (element > max) {
+          max = element;
+        }
+        if (element < min) {
+          min = element;
+        }
+
+        sum += element;
+      }
+
+      console.log("The maximum value of the array - " + max);
+      console.log("The minimum value of the array - " + min);
+      console.log("The sum of all elements - " + sum);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 01</title>
+
+    <style>
+      #container {
+        position: relative;
+        border: 1px solid gray;
+        width: 265px;
+        height: 50px;
+        margin-top: 20px;
+      }
+
+      #element {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+    <button id="increaseBtn">Speed ​​up</button>
+    <button id="decreaseBtn">Slow down</button>
+
+    <div id="container">
+      <div id="element"></div>
+    </div>
+
+    <script>
+      /*
+        Task:
+
+        Scenario: 
+        - When you click on the stop button, the animation should stop.
+        - When you click on the accelerate button, the animation should speed up by 20%, when you press it again, the animation speed
+          should increase.
+        - When you click on the "Slow down" button, the animation slows down by 20%, when you press it again, the speed becomes
+          slower.
+        */
+
+      let element = document.querySelector("#element");
+      let elementWidth = parseInt(getComputedStyle(element).width);
+      let containerWidth = parseInt(
+        getComputedStyle(document.querySelector("#container")).width
+      );
+
+      let direction = "right";
+      let step = 3;
+
+      function moveLeft() {
+        element.style.left = getLeft(element) - step + "px";
+      }
+
+      function moveRight() {
+        element.style.left = getLeft(element) + step + "px";
+      }
+
+      function getLeft(e) {
+        return parseInt(getComputedStyle(e).left);
+      }
+
+      function move() {
+        if (getLeft(element) >= containerWidth - elementWidth) {
+          direction = "left";
+        }
+        if (getLeft(element) <= 0) {
+          direction = "right";
+        }
+
+        if (direction == "right") {
+          moveRight();
+        } else {
+          moveLeft();
+        }
+      }
+
+      let timerId;
+
+      document
+        .querySelector("#startBtn")
+        .addEventListener("click", function () {
+          if (!timerId) timerId = setInterval(move, 40);
+        });
+
+      document.querySelector("#stopBtn").addEventListener("click", function () {
+        if (timerId) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      });
+
+      document
+        .querySelector("#increaseBtn")
+        .addEventListener("click", function () {
+          step += 1;
+        });
+
+      document
+        .querySelector("#decreaseBtn")
+        .addEventListener("click", function () {
+          step -= 1;
+        });
+    </script>
+  </body>
+</html>

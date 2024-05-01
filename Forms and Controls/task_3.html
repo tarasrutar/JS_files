@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 01</title>
+    <style>
+      .form-group {
+        margin: 4px;
+      }
+
+      .form-group label {
+        width: 75px;
+        display: inline-block;
+      }
+
+      .hint {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form>
+      <div class="form-group">
+        <label>Login</label>
+        <input type="text" name="login" />
+        <span class="hint" id="loginHint"
+          >Ваш логин должен состоять не менее чем из 4 символов</span
+        >
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" />
+        <span class="hint" id="passwordHint"
+          >Пароль должен содержать буквы, цифры и специальный символ</span
+        >
+      </div>
+
+      <div class="form-group">
+        <input type="submit" value="Sign up" />
+      </div>
+    </form>
+    <script>
+      /*
+        Task:
+        1. When you click on the "Register" button (without using click events), display using alert
+        information entered by the user in the login and password fields.
+        2. At the moment when the login input field receives focus, show the hint, which is located in span#loginHint
+           At the moment when the password input field receives focus - the hint span#passwordHint
+        */
+
+      const form = document.forms[0];
+
+      form.addEventListener("submit", function (e) {
+        let login = form.login.value;
+        let password = form.password.value;
+        alert(login + " " + password);
+
+        e.preventDefault();
+      });
+
+      form.login.addEventListener("focus", function () {
+        document.querySelector("#loginHint").style.display = "inline";
+      });
+
+      form.login.addEventListener("blur", function () {
+        document.querySelector("#loginHint").style.display = "none";
+      });
+
+      form.password.addEventListener("focus", function () {
+        document.querySelector("#passwordHint").style.display = "inline";
+      });
+
+      form.password.addEventListener("blur", function () {
+        document.querySelector("#passwordHint").style.display = "none";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 01</title>
+  </head>
+
+  <body>
+    <template id="template">
+      <div>
+        Title of book: <span id="titlePlaceholder"></span> <br />
+        Authour: <span id="authorPlaceholder"></span>
+        <hr />
+      </div>
+    </template>
+
+    <script>
+      /*
+        Task:
+        Without using third-party libraries, display the contents of the books array on the screen using the #template template
+        In the template, use the #titlePlaceholder element to display the title property from the object located in the books array.
+        In the template, use the #authorPlaceholder element to display the author property from the object located in the books array.
+        */
+      let books = [
+        {
+          title: "JavaScript. Complete Guide 7th Edition",
+          author: "David Flanagan",
+        },
+        {
+          title: "JavaScript. Templates",
+          author: "Stoyan Stefanov",
+        },
+        {
+          title: "Секреты JavaScript ниндзя",
+          author: "Секреты JavaScript ниндзя",
+        },
+      ];
+
+      let template = document.querySelector("#template");
+      for (let i = 0; i < books.length; i++) {
+        const book = books[i];
+        let clonedTempalte = template.content.cloneNode(true);
+        clonedTempalte.querySelector("#titlePlaceholder").textContent =
+          book.title;
+        clonedTempalte.querySelector("#authorPlaceholder").textContent =
+          book.author;
+        document.body.append(clonedTempalte);
+      }
+    </script>
+  </body>
+</html>
